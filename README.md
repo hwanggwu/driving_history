@@ -1,4 +1,4 @@
-# Driving_history
+# Description
 This is a root insurance take home coding exercise
 
 # Problem Statement
@@ -30,6 +30,11 @@ Expected output:
 Lauren: 42 miles @ 34 mph
 Dan: 39 miles @ 47 mph
 Kumi: 0 miles
+
+# Run the test
+
+All tests are located in the 'test' folder. They leverage src. Please execute rspec spec from terminal to run all tests.
+# Object Modeling
 
 # Thought process
 
