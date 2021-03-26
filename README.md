@@ -54,7 +54,8 @@ Our software design contains an activity diagram portrays the control flow from 
 
 To show the interactive relationships between objects in our driving record system, we create a sequence diagram that describes how—and in what order—a group of drivers and trips works together. The diagram documents an existing process and our system's requirements and to flush out a system's design. (Figure 4.)
 
-![Figure 4. Sequence diagram](https://user-images.githubusercontent.com/54546764/112648656-1bb6e200-8e20-11eb-97b1-4570c97580a5.png)
+![Figure 4. Sequence diagram](https://user-images.githubusercontent.com/54546764/112661600-1744f600-8e2d-11eb-8ff3-6d7bd9ed47b0.png)
+
 
 # Running Tests
 
