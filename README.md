@@ -19,20 +19,42 @@ Generate a report containing each driver with total miles driven and average spe
 
 Example input:
 
-'''
+Let's write some code to track driving history for people.
+
+The code will process an input file. You can either choose to accept the input via stdin (e.g. if you're using Ruby `cat input.txt | ruby yourcode.rb`), or as a file name given on the command line (e.g. `ruby yourcode.rb input.txt`). You can use any programming language that you want. Please choose a language that allows you to best demonstrate your programming ability.
+
+Each line in the input file will start with a command. There are two possible commands.
+
+The first command is Driver, which will register a new Driver in the app. Example:
+
+`Driver Dan`
+
+The second command is Trip, which will record a trip attributed to a driver. The line will be space delimited with the following fields: the command (Trip), driver name, start time, stop time, miles driven. Times will be given in the format of hours:minutes. We'll use a 24-hour clock and will assume that drivers never drive past midnight (the start time will always be before the end time). Example:
+
+`Trip Dan 07:15 07:45 17.3`
+
+Discard any trips that average a speed of less than 5 mph or greater than 100 mph.
+
+Generate a report containing each driver with total miles driven and average speed. Sort the output by most miles driven to least. Round miles and miles per hour to the nearest integer.
+
+Example input:
+
+```
 Driver Dan
 Driver Lauren
 Driver Kumi
 Trip Dan 07:15 07:45 17.3
 Trip Dan 06:12 06:32 21.8
 Trip Lauren 12:01 13:16 42.0
-'''
+```
+
 Expected output:
-'''
+
+```
 Lauren: 42 miles @ 34 mph
 Dan: 39 miles @ 47 mph
 Kumi: 0 miles
-'''
+```
 
 # Run by the terminal
 
@@ -61,11 +83,11 @@ To show the interactive relationships between objects in our driving record syst
 
 The development process is test-driven. In our software application, the test-driven environment was built by unit testing, integration testing, and functional testing. To ensure full coverage, unit tests are taken on each function/module of our codes to test functions in the program could work well in isolation, and cover edge cases as much as possible. Furthermore, integration tests and functional tests for assurance that the "units" could work together cohesively.
 For example:
-'''
+```
 In the Driver class, we try to cover edge cases in driverName variable: take three unit tests on getDriverName() to get expected results in three situations: with full driverName, with empty string driverName(""), and with null driverName.
 
 In the Main class, we try to cover three different cases that could happen in the input file: including invalid command, command Driver with same drivername, and a driver takes a trip before he/she registers as a driver (Command Trip is before Command Driver). We plan to throw certain exceptions to cover all of these cases to make sure the user could make sense where the problem is and skip these invalid command to keep parsing.
-'''
+```
 
 We also did integration tests and functional tests. Bottom-up apprach are used in the integration tests on Driver and Trip class, we created mulitple driver and trip objects to test them by considering all modules as one object.
 
@@ -80,13 +102,13 @@ In the process of designing the driving records system, there are many interesti
 ## Driver, Trip or Driver, Trip, current_records or only one driver?
 
 First, I need to classify that:
-'''
+```
 should we simplify the codes by designing only one class: driver, which means we only need to update his/her mileage and time data when we get a trip command?
-'''
+```
 or
-'''
+```
 we magnify the difficulty by adding one more class named current_records to represent all records in the input file. 
-'''
+```
 
 I find that the former option will discard a lot of trip information, and the trip information is essential in our software design. For example, Trip class may include departure, destination, road information, and so on in the future. Comparing to that, the second option makes the problem too complicated. If the input file is large, it means that the program will slow down and more memory will be wasted.
 
@@ -101,19 +123,19 @@ Our hashmap contains all current drivers in the input file as objects, we could 
 
 ## If drivers have repeated names
 In this project, becuase we don't know one certain trip is driven by which person if multiple users have same names, we will ignore the repeated driver and print warning messages:
-'''
+```
 Warning: Driver XXX is already existed!
-'''
+```
 Then we will skip repeated Driver commands and keep processing on the input file.
 
 ## Where to filter trips with (< 5 mph and > 100 mph?)
 Should we create trip objects on every Trip Command, even though the mph is out of our consideration? I think a lot on this trade-offs, and lists all merits and demerits as follow:
-'''
+```
 pro:
 We can track the unnormal and dangrous records on a certain driver. especially those driving records with > 100 mph. Those over 100 mph driving records are valuable. We only need to find all records that meet our requirements for each driver. 
-'''
-'''
+```
+```
 con:
 Waste space and time. If an input file contains a large number of invalid records, are we going to save them all?
-'''
+```
 Finally, to increase the readability and flexity of our driving record system, I decide to filter these invalid records before we create an object on them.
