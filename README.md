@@ -59,24 +59,61 @@ To show the interactive relationships between objects in our driving record syst
 
 # Running Tests
 
-## Date/ time exceeds 24 hours
-throw exceptions
-## Trips before drivers
-Throws exception if no such driver has the driving record
+The development process is test-driven. In our software application, the test-driven environment was built by unit testing, integration testing, and functional testing. To ensure full coverage, unit tests are taken on each function/module of our codes to test functions in the program could work well in isolation, and cover edge cases as much as possible. Furthermore, integration tests and functional tests for assurance that the "units" could work together cohesively.
+For example:
+'''
+In the Driver class, we try to cover edge cases in driverName variable: take three unit tests on getDriverName() to get expected results in three situations: with full driverName, with empty string driverName(""), and with null driverName.
 
-## If drivers have repeated names
-In this project, becuase we don't know which trip is belonging to specific person with same names, we will ignore the repeated driver and print error messages:
-Driver: XXX is already existed!
+In the Main class, we try to cover three different cases that could happen in the input file: including invalid command, command Driver with same drivername, and a driver takes a trip before he/she registers as a driver (Command Trip is before Command Driver). We plan to throw certain exceptions to cover all of these cases to make sure the user could make sense where the problem is and skip these invalid command to keep parsing.
+'''
+
+We also did integration tests and functional tests. Bottom-up apprach are used in the integration tests on Driver and Trip class, we created mulitple driver and trip objects to test them by considering all modules as one object.
+
+Functional tests are important, we create multiple sample input files to run our codes in TestMain. We have considered various situations in the input file to ensure that the result we get is what we want, even though some "seasoning" seems useless, such as extra more spaces between commands, endTime is before the startTime, and invalid date format. All these results will influence the modification of codes.
+
+All tests are located in the 'test' folder. Each test file leverages java files in src. Please execute 'java Testxxx' to run specific test. 
 
 # Thought process
 
-Two class: Trips and Driver, a driver could have multiple driving records. At first, I want to use one class to solve, but separete driver and trips will increase codes readability. 
+In the process of designing the driving records system, there are many interesting thinking processes and trade-offs:
 
-No drivingrecord class, because that is a redundant on resource. Drivers already have their trips.
+## Driver, Trip or Driver, Trip, current_records or only one driver?
 
-Use hashMap to store input Driver name and Driver class, and use priorityqueue to store the entry and sort by drivers milleage. Handle the repeated name exception and trips-before-driver exception.
+First, I need to classify that:
+'''
+should we simplify the codes by designing only one class: driver, which means we only need to update his/her mileage and time data when we get a trip command?
+'''
+or
+'''
+we magnify the difficulty by adding one more class named current_records to represent all records in the input file. 
+'''
 
-Where to filter trips with (< 5 mph and > 100 mph?)
-should we create each trip as a class? No -- that will waste too much time and space. So we filter these invalid trips at read file step.
+I find that the former option will discard a lot of trip information, and the trip information is essential in our software design. For example, Trip class may include departure, destination, road information, and so on in the future. Comparing to that, the second option makes the problem too complicated. If the input file is large, it means that the program will slow down and more memory will be wasted.
 
+Since there are two types of commands in the problem, we just create two class for each one, which is both efficient and flexible.
 
+## What data structure should be used to store parsed information?
+ArrayList, Tree, hashmap were in our consideration. It is worth noting that there is a common variable "drivername" in two different commands, so we can use the driver name as a "foreign key" to make associations between driver object and trip object. Therefore, drivername will be a "key" and its type is String. Data structures such as array and list can't store string as a key. Therefore, hashmap/dictionary becomes our first pick. Also, its get() and put() will cost O(1) time, which could save more time and memory than other data structure. The value in hashmap could be a driver object, which contains useful varaible: mileage and time to calculate speed and be sorted by mileage. 
+
+Therefore, we use hashmap to store the information parsed from the input file, and its entry will be 'HashMap<String, Driver>'.
+## How to sort driver by mileage?
+Our hashmap contains all current drivers in the input file as objects, we could either write a comparator to compare each driver's mileage to determine the order that we write on the reprot file. The other feasible and simple method is using a max heap to store the entry in the hashmap, and the heap maintains the driver with more miles driven is before the driver with less mileage. Moreover, we could use the heap to write our output file. After we push all entries in the hashmap, all drivers are ready to be written on the reprot with required orders. 
+
+## If drivers have repeated names
+In this project, becuase we don't know one certain trip is driven by which person if multiple users have same names, we will ignore the repeated driver and print warning messages:
+'''
+Warning: Driver XXX is already existed!
+'''
+Then we will skip repeated Driver commands and keep processing on the input file.
+
+## Where to filter trips with (< 5 mph and > 100 mph?)
+Should we create trip objects on every Trip Command, even though the mph is out of our consideration? I think a lot on this trade-offs, and lists all merits and demerits as follow:
+'''
+pro:
+We can track the unnormal and dangrous records on a certain driver. especially those driving records with > 100 mph. Those over 100 mph driving records are valuable. We only need to find all records that meet our requirements for each driver. 
+'''
+'''
+con:
+Waste space and time. If an input file contains a large number of invalid records, are we going to save them all?
+'''
+Finally, to increase the readability and flexity of our driving record system, I decide to filter these invalid records before we create an object on them.
