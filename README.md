@@ -33,6 +33,7 @@ Lauren: 42 miles @ 34 mph
 Dan: 39 miles @ 47 mph
 Kumi: 0 miles
 '''
+
 # Run by the terminal
 
 All tests are located in the 'test' folder. Each test file leverages java files in src. Please execute 'java Testxxx' to run specific test.
@@ -43,9 +44,17 @@ At this time, we create two class to cover all required situations that the prob
 
 ![Figure 1. Class diagram](https://user-images.githubusercontent.com/54546764/112647807-45233e00-8e1f-11eb-9270-c866d7fc5ecf.png)
 
-In our software design, the sample will have only one use case: The driver signs up with the username that represents as Command Driver, and the user could take a or multiple trips that will be recorded the specific details: the driver name, the start time, the end time, and the miles driven. All these information will be represented as a Trip command. A valid input file will consist of the above two commands (meet the command standard). Specific Details on the Use case diagram(Figure 2.)
+In our software design, the sample will have only one use case: The driver signs up with the username that represents as Command Driver, and the user could take zero or multiple trips that will be recorded the specific details: the driver name, the start time, the end time, and the miles driven. All these information will be represented as a Trip command. A valid input file will consist of the above two commands (meet the command standard). Specific Details on the Use case diagram(Figure 2.)
 
+![Figure 2. Use case diagram](https://user-images.githubusercontent.com/54546764/112648628-16599780-8e20-11eb-9fb5-fb21ec44c42a.png)
 
+Our software design contains an activity diagram portrays the control flow from a start point to a finish point showing the various decision paths that exist while the activity is being executed. The activity diagram describes both sequential processing and concurrent processing of activities, including input file parse, command options, creating driver and trip class, sort miles by priorityqueue, and write report file. (Figure 3.)
+
+![Figure 3. Activity diagram](https://user-images.githubusercontent.com/54546764/112648647-19ed1e80-8e20-11eb-85cd-01e4f7be869e.png)
+
+To show the interactive relationships between objects in our driving record system, we create a sequence diagram that describes how—and in what order—a group of drivers and trips works together. The diagram documents an existing process and our system's requirements and to flush out a system's design. (Figure 4.)
+
+![Figure 4. Sequence diagram](https://user-images.githubusercontent.com/54546764/112648656-1bb6e200-8e20-11eb-97b1-4570c97580a5.png)
 
 # Running Tests
 
