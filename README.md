@@ -33,19 +33,10 @@ Kumi: 0 miles
 
 # Run the test
 
-All tests are located in the 'test' folder. They leverage src. Please execute rspec spec from terminal to run all tests.
+All tests are located in the 'test' folder. Each test file leverages java files in src. Please execute 'java Testxxx' to run specific test.
+
 # Object Modeling
-
-# Thought process
-
-Two class: Trips and Driver, a driver could have multiple driving records. At first, I want to use one class to solve, but separete driver and trips will increase codes readability. 
-
-No drivingrecord class, because that is a redundant on resource. Drivers already have their trips.
-
-Use hashMap to store input Driver name and Driver class, and use priorityqueue to store the entry and sort by drivers milleage. Handle the repeated name exception and trips-before-driver exception.
-
-Where to filter trips with (< 5 mph and > 100 mph?)
-should we create each trip as a class? No -- that will waste too much time and space. So we filter these invalid trips at read file step.
+At this time, we create two class to cover all required situations that the problem statement requires: Driver class and Trip class. They have aggreagation relationships: Trip class is a classifier as a part of or subordinate to Driver class. An aggregation is a special type of association in which objects are assembled or configured together to create a more complex object.
 
 
 # Running Tests
@@ -58,4 +49,16 @@ Throws exception if no such driver has the driving record
 ## If drivers have repeated names
 In this project, becuase we don't know which trip is belonging to specific person with same names, we will ignore the repeated driver and print error messages:
 Driver: XXX is already existed!
+
+# Thought process
+
+Two class: Trips and Driver, a driver could have multiple driving records. At first, I want to use one class to solve, but separete driver and trips will increase codes readability. 
+
+No drivingrecord class, because that is a redundant on resource. Drivers already have their trips.
+
+Use hashMap to store input Driver name and Driver class, and use priorityqueue to store the entry and sort by drivers milleage. Handle the repeated name exception and trips-before-driver exception.
+
+Where to filter trips with (< 5 mph and > 100 mph?)
+should we create each trip as a class? No -- that will waste too much time and space. So we filter these invalid trips at read file step.
+
 
