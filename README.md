@@ -7,11 +7,11 @@ Each line in the input file will start with a command. There are two possible co
 
 The first command is Driver, which will register a new Driver in the app. Example:
 
-Driver Dan
+'Driver Dan'
 
 The second command is Trip, which will record a trip attributed to a driver. The line will be space delimited with the following fields: the command (Trip), driver name, start time, stop time, miles driven. Times will be given in the format of hours:minutes. We'll use a 24-hour clock and will assume that drivers never drive past midnight (the start time will always be before the end time). Example:
 
-Trip Dan 07:15 07:45 17.3
+'Trip Dan 07:15 07:45 17.3'
 
 Discard any trips that average a speed of less than 5 mph or greater than 100 mph.
 
@@ -19,24 +19,29 @@ Generate a report containing each driver with total miles driven and average spe
 
 Example input:
 
+'''
 Driver Dan
 Driver Lauren
 Driver Kumi
 Trip Dan 07:15 07:45 17.3
 Trip Dan 06:12 06:32 21.8
 Trip Lauren 12:01 13:16 42.0
+'''
 Expected output:
-
+'''
 Lauren: 42 miles @ 34 mph
 Dan: 39 miles @ 47 mph
 Kumi: 0 miles
-
-# Run the test
+'''
+# Run by the terminal
 
 All tests are located in the 'test' folder. Each test file leverages java files in src. Please execute 'java Testxxx' to run specific test.
 
 # Object Modeling
-At this time, we create two class to cover all required situations that the problem statement requires: Driver class and Trip class. They have aggreagation relationships: Trip class is a classifier as a part of or subordinate to Driver class. An aggregation is a special type of association in which objects are assembled or configured together to create a more complex object.
+
+At this time, we create two class to cover all required situations that the problem statement requires: Driver class and Trip class. They have aggreagation relationships: Trip class is a classifier as a part of or subordinate to Driver class, which means every object in Class Driver is associated with zero or more objects in Class Trip, and that every object in Class Trip is associated with exactly one object in Class Driver. The classes that will actually be programmed, the main objects, or the interactions between classes and objects will be shown on the class diagram (Figure 1.)
+
+
 
 
 # Running Tests
