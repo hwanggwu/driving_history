@@ -104,7 +104,7 @@ In the process of designing the driving records system, there are many interesti
 
 First, I need to classify that:
 ```
-should we simplify the codes by designing only one class: driver, which means we only need to update his/her mileage and time data when we get a trip command?
+we simplify the codes by designing only one class: driver, which means we only need to update his/her mileage and time data when we get a trip command?
 ```
 or
 ```
