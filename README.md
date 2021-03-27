@@ -11,7 +11,7 @@ The first command is Driver, which will register a new Driver in the app. Exampl
 
 The second command is Trip, which will record a trip attributed to a driver. The line will be space delimited with the following fields: the command (Trip), driver name, start time, stop time, miles driven. Times will be given in the format of hours:minutes. We'll use a 24-hour clock and will assume that drivers never drive past midnight (the start time will always be before the end time). Example:
 
-<Trip Dan 07:15 07:45 17.3
+'Trip Dan 07:15 07:45 17.3'
 
 Discard any trips that average a speed of less than 5 mph or greater than 100 mph.
 
@@ -64,11 +64,10 @@ To show the interactive relationships between objects in our driving record syst
 
 The development process is test-driven. In our software application, the test-driven environment was built by unit testing, integration testing, and functional testing. To ensure full coverage, unit tests are taken on each function/module of our codes to test functions in the program that could work well in isolation and cover edge cases as much as possible. Furthermore, integration tests and functional tests for assurance that the "units" could work together cohesively.
 For example:
-```
-In the Driver class, we try to cover edge cases in the driverName variable: take three unit tests on getDriverName() to get expected results in three situations: with full driverName, with empty string driverName(""), and with null driverName.
 
-In the Main class, we try to cover three different cases that could happen in the input file: including invalid command, command Driver with the same driver name, and a driver takes a trip before he/she registers as a driver (Command Trip is before Command Driver). We plan to throw certain exceptions to cover all of these cases to make sure the user could make sense of where the problem is and skip these invalid commands to keep parsing.
-```
+> In the Driver class, we try to cover edge cases in the driverName variable: take three unit tests on getDriverName() to get expected results in three situations: with full driverName, with empty string driverName(""), and with null driverName.
+
+>In the Main class, we try to cover three different cases that could happen in the input file: including invalid command, command Driver with the same driver name, and a driver takes a trip before he/she registers as a driver (Command Trip is before Command Driver). We plan to throw certain exceptions to cover all of these cases to make sure the user could make sense of where the problem is and skip these invalid commands to keep parsing.
 
 We also did integration tests and functional tests. The bottom-up approach is used in the integration tests on the Driver and Trip class, we created multiple drivers and trip objects to test them by considering all modules as one object.
 
