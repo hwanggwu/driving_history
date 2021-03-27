@@ -60,7 +60,7 @@ To show the interactive relationships between objects in our driving record syst
 ![Figure 4. Sequence diagram](https://user-images.githubusercontent.com/54546764/112737266-86a30e80-8f2f-11eb-9f81-de2be539692f.png)
 
 
-# Running Tests
+# Tests Approach
 
 The development process is test-driven. In our software application, the test-driven environment was built by unit testing, integration testing, and functional testing. To ensure full coverage, unit tests are taken on each function/module of our codes to test functions in the program that could work well in isolation and cover edge cases as much as possible. Furthermore, integration tests and functional tests for assurance that the "units" could work together cohesively.
 For example:
