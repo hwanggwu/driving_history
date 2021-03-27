@@ -49,15 +49,15 @@ At this time, we create two classes to cover all required situations that the pr
 
 In our software design, the sample will have only one use case: The driver signs up with the username that represents as Command Driver, and the user could take zero or multiple trips that will be recorded the specific details: the driver name, the start time, the end time, and the miles driven. All this information will be represented as a Trip command. A valid input file will consist of the above two commands (meet the command standard). Specific Details on the Use case diagram.
 
-![Figure 2. Use case diagram](https://user-images.githubusercontent.com/54546764/112648628-16599780-8e20-11eb-9fb5-fb21ec44c42a.png)
+![Figure 2. Use case diagram](https://user-images.githubusercontent.com/54546764/112737264-830f8780-8f2f-11eb-93b5-a7b54cbc1f8b.png)
 
 Our software design contains an activity diagram that portrays the control flow from a start point to a finish point showing the various decision paths that exist while the activity is being executed. The activity diagram describes both sequential processing and concurrent processing of activities, including input file parsing, command options, creating driver and trip class, sort miles by priority queue, and write report file.
 
-![Figure 3. Activity diagram](https://user-images.githubusercontent.com/54546764/112648647-19ed1e80-8e20-11eb-85cd-01e4f7be869e.png)
+![Figure 3. Activity diagram](https://user-images.githubusercontent.com/54546764/112737265-8571e180-8f2f-11eb-8104-658c69bb1bec.png)
 
 To show the interactive relationships between objects in our driving record system, we create a sequence diagram that describes how—and in what order—a group of drivers and trips works together. The diagram documents an existing process and our system's requirements and to flush out a system's design.
 
-![Figure 4. Sequence diagram](https://user-images.githubusercontent.com/54546764/112661600-1744f600-8e2d-11eb-8ff3-6d7bd9ed47b0.png)
+![Figure 4. Sequence diagram](https://user-images.githubusercontent.com/54546764/112737266-86a30e80-8f2f-11eb-9f81-de2be539692f.png)
 
 
 # Running Tests
