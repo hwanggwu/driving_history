@@ -53,7 +53,7 @@ In our software design, the sample will have only one use case: The driver signs
 
 Our software design contains an activity diagram that portrays the control flow from a start point to a finish point showing the various decision paths that exist while the activity is being executed. The activity diagram describes both sequential processing and concurrent processing of activities, including input file parsing, command options, creating driver and trip class, sort miles by priority queue, and write report file.
 
-![Figure 3. Activity diagram](https://user-images.githubusercontent.com/54546764/112737265-8571e180-8f2f-11eb-8104-658c69bb1bec.png)
+![Figure 3. Activity diagram](https://user-images.githubusercontent.com/54546764/112737816-adfbda80-8f33-11eb-87c5-70ff7704b465.png)
 
 To show the interactive relationships between objects in our driving record system, we create a sequence diagram that describes how—and in what order—a group of drivers and trips works together. The diagram documents an existing process and our system's requirements and to flush out a system's design.
 
