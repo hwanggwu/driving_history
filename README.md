@@ -11,7 +11,7 @@ The first command is Driver, which will register a new Driver in the app. Exampl
 
 The second command is Trip, which will record a trip attributed to a driver. The line will be space delimited with the following fields: the command (Trip), driver name, start time, stop time, miles driven. Times will be given in the format of hours:minutes. We'll use a 24-hour clock and will assume that drivers never drive past midnight (the start time will always be before the end time). Example:
 
-'Trip Dan 07:15 07:45 17.3'
+`Trip Dan 07:15 07:45 17.3`
 
 Discard any trips that average a speed of less than 5 mph or greater than 100 mph.
 
@@ -44,8 +44,7 @@ All tests are located in the 'test' folder. Each test file leverages java files 
 
 At this time, we create two classes to cover all required situations that the problem statement requires: Driver class and Trip class. They have aggregation relationships: Trip class is a classifier as a part of or subordinate to Driver class, which means every object in Class Driver is associated with zero or more objects in Class Trip, and that every object in Class Trip is associated with exactly one object in Class Driver. The classes that will be programmed, the main objects, or the interactions between classes and objects will be shown on the class diagram.
 
-![Figure 1. Class diagram](https://user-images.githubusercontent.com/54546764/112647807-45233e00-8e1f-11eb-9270-c866d7fc5ecf.png)
-
+![Figure 1. Class diagram](https://user-images.githubusercontent.com/54546764/112647807-45233e00-8e1f-11eb-9270-c866d7fc5ecf.png#center)
 
 In our software design, the sample will have only one use case: The driver signs up with the username that represents as Command Driver, and the user could take zero or multiple trips that will be recorded the specific details: the driver name, the start time, the end time, and the miles driven. All this information will be represented as a Trip command. A valid input file will consist of the above two commands (meet the command standard). Specific Details on the Use case diagram.
 
@@ -60,7 +59,7 @@ To show the interactive relationships between objects in our driving record syst
 ![Figure 4. Sequence diagram](https://user-images.githubusercontent.com/54546764/112737266-86a30e80-8f2f-11eb-9f81-de2be539692f.png)
 
 
-# Tests Approach
+# Test Approach
 
 The development process is test-driven. In our software application, the test-driven environment was built by unit testing, integration testing, and functional testing. To ensure full coverage, unit tests are taken on each function/module of our codes to test functions in the program that could work well in isolation and cover edge cases as much as possible. Furthermore, integration tests and functional tests for assurance that the "units" could work together cohesively.
 For example:
