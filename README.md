@@ -38,7 +38,13 @@ Kumi: 0 miles
 
 # Run by the terminal
 
-All tests are located in the 'test' folder. Each test file leverages java files in src. Please execute 'java Testxxx' to run a specific test.
+Please open the gitbundle from your preferred terminal application and navigate into the main folder using cd driving_history. The core codes are located on the `/src` folder. Don't forget to run a bundle install if you want to run the tests!
+
+Once completed you can run the program by executing `javac Main.java` to compile the java file, you could get all '.class' files. 
+Then you could run `java Main` to get start from main function. You will get the following information: 
+<Please enter the input file name (w/ .txt):
+
+Please import the input file with absolute or relative path. If you do not have a data file that meets the specifications outlined below in the "Problem Statement" section. Please feel free to input all test files `test/data/index.txt` from terminal to use an example data set provided in this repository.
 
 # Object Modeling
 
@@ -61,7 +67,12 @@ To show the interactive relationships between objects in our driving record syst
 
 # Test Approach
 
-The development process is test-driven. In our software application, the test-driven environment was built by unit testing, integration testing, and functional testing. To ensure full coverage, unit tests are taken on each function/module of our codes to test functions in the program that could work well in isolation and cover edge cases as much as possible. Furthermore, integration tests and functional tests for assurance that the "units" could work together cohesively.
+The development process is test-driven. In our software application, the test-driven environment was built by: 
+* unit testing
+* integration testing
+* functional testing. 
+
+To ensure full coverage, unit tests are taken on each function/module of our codes to test functions in the program that could work well in isolation and cover edge cases as much as possible. Furthermore, integration tests and functional tests for assurance that the "units" could work together cohesively.
 For example:
 
 > In the Driver class, we try to cover edge cases in the driverName variable: take three unit tests on getDriverName() to get expected results in three situations: with full driverName, with empty string driverName(""), and with null driverName.
@@ -93,7 +104,9 @@ I find that the former option will discard a lot of trip information, and the tr
 Since there are two types of commands in the problem, we just create two classes for each one, which is both efficient and flexible.
 
 ## What data structure should be used to store parsed information?
-ArrayList, Tree, hashmap were in our consideration. It is worth noting that there is a common variable 'drivername' in two different commands, so we can use the driver name as a "foreign key" to make associations between driver object and trip object. Therefore, "drivername" will be a "key" and its type is String. Data structures such as array and list can't store a string as a key. Therefore, hashmap/dictionary becomes our first pick. Also, its get() and put() will cost O(1) time, which could save more time and memory than other data structures. The value in the hashmap could be a driver object, which contains a useful variable: mileage and time to calculate speed and be sorted by mileage. 
+ArrayList, Tree, hashmap were in our consideration. It is worth noting that there is a common variable 'drivername' in two different commands, so we can use the driver name as a "foreign key" to make associations between driver object and trip object. Therefore, "drivername" will be a "key" and its type is String. Data structures such as array and list can't store a string as a key. 
+
+A data structure named Hashmap/dictionary could store String type variable as a key, and its get() and put() will cost O(1) time that could save more time and memory than other data structures. The value in the hashmap could be a driver object, which contains a useful variable: mileage and time to calculate speed and be sorted by mileage. 
 
 Therefore, we use a hashmap to store the information parsed from the input file, and its entry will be 'HashMap<String, Driver>'.
 ## How to sort driver by mileage?
