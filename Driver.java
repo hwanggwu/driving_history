@@ -2,10 +2,14 @@ import java.util.*;
 public class Driver {
 	String driverName;
 	List<Trip> trips;
+	double mileage;
+	double time;
 	
-	public Driver(String driverName, List<Trip> trips) {
+	public Driver(String driverName, List<Trip> trips, double mileage, double time) {
 		this.driverName = driverName;
-		this.trips = new ArrayList<>();
+		this.trips = trips;
+		this.mileage = mileage;
+		this.time = time;
 	}
 
 	public String getDriverName() {
@@ -16,28 +20,17 @@ public class Driver {
 		this.driverName = newName;
 	}
 	
-	public void addTrips(Trip trip) {
-		trips.add(trip);
-	}
-	
-	public double getMilleage() {
-		double milleage = 0;
-		for (Trip trip : trips) {
-			milleage += trip.miles; 
-		}
-		return milleage; 
+	public double getMileage() {
+		return mileage; 
 	}
 
 	public double getTime() {
-		double time = 0;
-		for (Trip trip : trips) {
-			time += trip.hours;
-		}
 		return time;
 	}
 
-	public boolean isEmpty() {
-		if (Math.abs(getMilleage()) < 0.00001) { // use milleage to check if the driver has driving record
+	// Use mileage to check if the driver has moved
+	public boolean isUnMoved() {
+		if (Math.abs(mileage) < 0.00001) { 
 			return true;
 		}
 		return false;
@@ -48,6 +41,6 @@ public class Driver {
 	}
 	
 	public int getMph() {
-		return (int)Math.round(getMilleage() / getTime());
+		return (int)Math.round(mileage / time);
 	}
 }
