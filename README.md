@@ -107,9 +107,34 @@ Since there are two types of commands in the problem, we just create two classes
 ## What data structure should be used to store parsed information?
 ArrayList, Tree, hashmap were in our consideration. It is worth noting that there is a common variable 'drivername' in two different commands, so we can use the driver name as a "foreign key" to make associations between driver object and trip object. Therefore, "drivername" will be a "key" and its type is String. Data structures such as array and list can't store a string as a key. 
 
-A data structure named Hashmap/dictionary could store String type variable as a key, and its get() and put() will cost O(1) time that could save more time and memory than other data structures. The value in the hashmap could be a driver object, which contains a useful variable: mileage and time to calculate speed and be sorted by mileage. 
+A data structure named Hashmap/dictionary could store String type variable as a key, and its get() and put() will cost O(1) time that could save more time and memory than other data structures. The value in the hashmap could be a driver object, which contains a useful variable: mileage and time to calculate speed (mph). 
 
 Therefore, we use a hashmap to store the information parsed from the input file, and its entry will be 'HashMap<String, Driver>'.
+
+## Some language idioms to be used
+Some new features could be implemented on this coding exercise to increase the readability and performance of codes.
+
+### Java IO reader: BufferReader & BufferWriter
+Java 8 convented BufferReader as a replacement of DataInputStreams for textual input that buffers characters so as to provide for the efficient reading of characters, arrays, and lines. Without buffering, each invocation of read() or readLine() could cause bytes to be read from the file, converted into characters, and then returned, which can be very inefficient.
+
+### DateTimeFormatter
+DateTimeFormatter is a formatter for printing and parsing date-time objects, which could handle many complex patterns letters, such as yyyy-MMM-dd, d MMM uuuu, and so on. The reasons why I use this formatter is becasue:
+* The formatter could handle much more complex time formats, to ensure the flexity of our system.
+* The formatter created from a pattern can be used as many times as necessary, it is immutable and is thread-safe.
+* It could parse a string of dateTime by a straightforward way. 
+
+## Handles exceptions in input file
+For each command, I use try-catch block to catch some exceptions in the input file. My thought is to skip all invalid commands and keep parsing the rest input to gather valid information. Meanwhile, the system will print the invalid command line and the stack trace.
+
+For Command `Driver`, I try to handle such exceptions :
+*  Identical userName
+*  Not meet the standard format of Trip command, such as: 'Driver'
+
+For Command `Trip`, I try to handle such exceptions :
+* DateTime can't be parsed such as: "27:04", "10.21"
+* EndTime is before the startTime such as: start at "16:04", and end at "11:01"
+* Not meet the standard format of Trip command, such as: 'Trip 10:25 12:22 55'
+
 ## How to sort driver by mileage?
 Our hashmap contains all current drivers in the input file as objects, we could either write a comparator to compare each driver's mileage to determine the order that we write on the report file. The other feasible and simple method is using a max heap to store the entry in the hashmap, and the heap maintains the driver with more miles driven is before the driver with less mileage. Moreover, we could use the heap to write our output file. After we push all entries in the hashmap, all drivers are ready to be written on the report with required orders. 
 
