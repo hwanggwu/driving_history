@@ -40,7 +40,8 @@ Kumi: 0 miles
 
 Please open the gitbundle from your preferred terminal application and navigate into the main folder using cd driving_history. The core codes are located on the `/src` folder. Don't forget to run a bundle install if you want to run the tests!
 
-Once completed you can run the program by executing `javac Main.java` to compile the java file, you could get all '.class' files. 
+Once completed you can run the program by executing `javac Main.java` to compile the java file, you could get all `.class` files. 
+
 Then you could run `java Main` to get start from main function. You will get the following information: 
 <Please enter the input file name (w/ .txt):
 
