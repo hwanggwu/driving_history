@@ -45,7 +45,7 @@ Once completed you can run the program by executing `javac Main.java` to compile
 Then you could run `java Main` to get start from main function. You will get the following information: 
 <Please enter the input file name (w/ .txt):
 
-Please import the input file with absolute or relative path. If you do not have a data file that meets the specifications outlined below in the "Problem Statement" section. Please feel free to input all test files `test/data/index.txt` from terminal to use an example data set provided in this repository.
+Please import the input file with an absolute or relative path(be sure to put your input file into /src folder). If you do not have a data file that meets the specifications outlined below in the "Problem Statement" section. Please feel free to input all test files `/test/data/input.txt` from terminal to use an example data set provided in this repository.
 
 # Object Modeling
 
